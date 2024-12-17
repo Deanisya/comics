@@ -1,0 +1,40 @@
+.comicsItem {
+	width: 30%;
+
+	margin: 1%;
+	align-self: flex-start;
+	color: white;
+	position: relative;
+	background: #191c29;
+	border-radius: 6px;
+	color: rgb(88 199 250 / 0%);
+	cursor: pointer;
+}
+.comicsItem img {
+	width: 100%;
+}
+.comicsItem a {
+	color: white;
+	text-decoration: none;
+}
+.heading {
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #070707;
+	text-shadow: 0 0 3px white;
+}
+.comicsItem p {
+	margin-bottom: 5px;
+	padding: 0 15px 15px;
+}
+.comicsItem p span {
+	color: darkred;
+	font-weight: bold;
+	text-shadow: 0 0 3px white;
+}
+.desc {
+	font-size: 14px;
+	font-style: italic;
+	color: white;
+}
