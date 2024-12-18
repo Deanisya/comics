@@ -10,8 +10,7 @@
 	border: 2px solid #070707;
 	padding: 30px 0;
 }
-.deleteBtn {
-	position: absolute;
-	right: 5px;
-	top: 5px;
+.addBtn {
+	border: 2px solid #070707;
+	padding: 5px auto;
 }

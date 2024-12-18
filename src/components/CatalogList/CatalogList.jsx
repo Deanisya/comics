@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ComicsItem from '../ComicsItem/ComicsItem';
 import style from './CatalogList.module.css';
+import MyModal from '../MyModal/MyModal';
+import FormComics from '../FormComics/FormComics';
 
 function CatalogList(props) {
 	const [comics, setComics] = useState([]);
+	const [isModal, setIsModal] = useState(false);
 
 	useEffect(() => {
 		fetch('https://api.tvmaze.com/search/shows?q=batman')
@@ -28,18 +31,29 @@ function CatalogList(props) {
 		setComics([...comics]);
 	};
 
+	const addComics = obj => {
+		// (1) comics.push(obj);
+		// setComics([...comics])
+		// (2) comics.splice(comics.length, 0 , obj);
+		// setComics([...comics])
+		// (3)
+		setComics([...comics, obj]);
+	};
+
 	return (
-		<div className={style.CatalogList}>
-			{comics.map((item, i) => {
-				return (
-					<ComicsItem item={item} index={i} key={item.id}>
-						<button className={style.deleteBtn} onClick={() => deleteComicsItem(i)}>
-							DELETE
-						</button>
-					</ComicsItem>
-				);
-			})}
-		</div>
+		<>
+			<button className={style.addBtn} onClick={() => setIsModal(true)}>
+				Create new comics
+			</button>
+			<div className={style.CatalogList}>
+				{comics.map((item, i) => {
+					return <ComicsItem item={item} index={i} key={item.id} deleteComicsItem={() => deleteComicsItem(i)} />;
+				})}
+			</div>
+			<MyModal title='Add comics' isModal={isModal} closeModal={() => setIsModal(false)}>
+				<FormComics addComics={addComics} closeModal={() => setIsModal(false)} />
+			</MyModal>
+		</>
 	);
 }
 

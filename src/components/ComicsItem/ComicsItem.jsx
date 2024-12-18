@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './ComicsItem.module.css';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 function ComicsItem(props) {
 	let { name, link_url, img_src, rating, premiered, desc, id } = props.item;
@@ -10,7 +11,7 @@ function ComicsItem(props) {
 			<p className={style.heading}>Premier: {premiered}</p>
 			<p>Rating: {rating}</p>
 			<p className={style.desc}>{desc.replace(/<\/?[a-zA-Z]+>/gi, '')}</p>
-			{props.children}
+			<DeleteButton title='Удалить' onClick={props.deleteComicsItem} />
 		</div>
 	);
 }
