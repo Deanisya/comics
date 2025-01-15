@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './FormComics.module.css';
+// import style from './FormComics.module.css';
 import useInput from '../../hooks/useInput';
 
 // name: e.show.name,

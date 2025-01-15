@@ -1,7 +1,7 @@
 .comicsItem {
-	width: 30%;
+	width: 23%;
 	margin: 1%;
-	align-self: flex-start;
+	/* align-self: flex-start; */
 	color: white;
 	position: relative;
 	background: #191c29;
@@ -23,6 +23,9 @@
 	color: #070707;
 	text-shadow: 0 0 3px white;
 }
+.rating {
+	color: #fff;
+}
 .comicsItem p {
 	margin-bottom: 5px;
 	padding: 0 15px 15px;
@@ -35,5 +38,8 @@
 .desc {
 	font-size: 14px;
 	font-style: italic;
+	color: white;
+}
+.price {
 	color: white;
 }

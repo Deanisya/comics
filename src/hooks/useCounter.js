@@ -6,7 +6,11 @@ const useCounter = (defaultCount = 0) => {
 	return {
 		count,
 		add: () => setCount(count + 1),
-		subtract: () => setCount(count - 1),
+		subtract: () => {
+			if (count > 1) {
+				setCount(count - 1);
+			}
+		},
 	};
 };
 
