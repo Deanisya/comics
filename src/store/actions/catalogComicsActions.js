@@ -1,7 +1,6 @@
 export const ADD_COMICS = 'ADD_COMICS';
 export const DELETE_COMICS = 'DELETE_COMICS';
 export const LOAD_COMICS = 'LOAD_COMICS';
-export const ADD_TO_CART = 'ADD_TO_CART';
 
 export const deleteComicsAction = index => {
 	return {
@@ -13,12 +12,6 @@ export const addComicsAction = obj => {
 	return {
 		type: ADD_COMICS,
 		payload: obj,
-	};
-};
-export const openSideBar = id => {
-	return {
-		type: ADD_TO_CART,
-		payload: id,
 	};
 };
 
@@ -36,6 +29,7 @@ export const loadComicsAction = () => {
 					desc: e.show.summary,
 					id: e.show.id,
 				}));
+				console.log(arr);
 				dispatch({
 					type: LOAD_COMICS,
 					payload: arr,

@@ -6,9 +6,11 @@ import FormComics from '../FormComics/FormComics';
 import { useDispatch, useSelector } from 'react-redux';
 import { addComicsAction, deleteComicsAction, loadComicsAction } from '../../store/actions/catalogComicsActions';
 
-function CatalogListRedux({ setCountCurt }) {
+function CatalogListRedux() {
 	const [isModal, setIsModal] = useState(false);
 	let comics = useSelector(state => state.catalogComics);
+	// const comics = useSelector(state => (state.comics ? state.comics.catalogComics : []));
+
 	let dispatch = useDispatch();
 
 	useEffect(() => {
@@ -36,7 +38,7 @@ function CatalogListRedux({ setCountCurt }) {
 			<div className={style.CatalogList}>
 				{comics.map((item, i) => {
 					const price = getRandomPrice(item.id, 100, 1000);
-					return <ComicsItem setCountCurt={setCountCurt} price={price} item={{ ...item, price }} index={i} key={item.id} deleteComicsItem={() => dispatch(deleteComicsAction(i))} />;
+					return <ComicsItem price={price} item={{ ...item, price }} index={i} key={item.id} deleteComicsItem={() => dispatch(deleteComicsAction(i))} />;
 				})}
 			</div>
 			<MyModal title='Add comics' isModal={isModal} closeModal={() => setIsModal(false)}>

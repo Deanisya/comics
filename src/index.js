@@ -14,3 +14,4 @@ root.render(
 		<App />
 	</Provider>
 );
+window.store = store;

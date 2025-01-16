@@ -1,15 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import useInput from '../../hooks/useInput';
 import useAuth from '../../hooks/useAuth';
-import { AuthContext } from '../../Context';
 
 function FormLogIn({ closeModal, setIsLoginTrue }) {
 	let login = useInput('');
 	let pass = useInput('');
 
 	let { res, error, auth } = useAuth();
-
-	let { setUser } = useContext(AuthContext);
 
 	const handlerLogin = e => {
 		e.preventDefault();
@@ -19,7 +16,6 @@ function FormLogIn({ closeModal, setIsLoginTrue }) {
 	};
 
 	useEffect(() => {
-		setUser(res);
 		if (res) {
 			closeModal();
 			setIsLoginTrue();
