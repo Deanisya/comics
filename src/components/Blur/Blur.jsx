@@ -1,8 +1,17 @@
 import React from 'react';
 import styles from './Blur.module.css';
 
-function Blur({ setOpenSideBar, openSideBar }) {
-	return <div onClick={() => setOpenSideBar(!openSideBar)} className={styles.blurMenu}></div>;
+import { useDispatch } from 'react-redux';
+import { closeSideBar } from '../../store/reducers/comicsCartReducer';
+
+function Blur() {
+	const dispatch = useDispatch();
+
+	const handleCloseSideBar = () => {
+		dispatch(closeSideBar());
+	};
+
+	return <div onClick={handleCloseSideBar} className={styles.blurMenu}></div>;
 }
 
 export default Blur;

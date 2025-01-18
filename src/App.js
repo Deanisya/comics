@@ -8,20 +8,10 @@ import SectionContainer from './components/SectionContainer/SectionContainer';
 import SideBar from './components/SideBar/SideBar';
 
 function App() {
-	const [openSideBar, setOpenSideBar] = useState(false);
-
-	useEffect(() => {
-		if (openSideBar) {
-			document.body.style.overflow = 'hidden';
-		} else {
-			document.body.style.overflow = 'auto';
-		}
-	});
-
 	return (
 		<div className='App'>
-			<NavBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
-			<SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+			<NavBar />
+			<SideBar />
 			<LogInLogOut />
 			<SectionContainer>
 				<CatalogListRedux />

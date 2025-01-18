@@ -1,29 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from './ComicsItem.module.css';
 import DeleteButton from '../DeleteButton/DeleteButton';
-import AddInCurt from '../AddInCurt/AddInCurt';
-import Counter from '../Counter/Counter';
-import { useDispatch } from 'react-redux';
-import { addComicsInCurtAction } from '../../store/actions/comicsCartAction';
+import AddToCartButton from '../common/AddToCartButton/AddToCartButton';
+import Counter from '../common/Counter/Counter';
+import { useSelector } from 'react-redux';
 
-function ComicsItem(props) {
-	let { name, link_url, img_src, rating, premiered, desc, id, price } = props.item;
+function ComicsItem({ item, deleteComicsItem }) {
+	let { name, link_url, img_src, rating, premiered, desc, id, price } = item;
 
-	const [isAddCart, setIsAddCart] = useState(false);
-	const dispatch = useDispatch();
-
-	const addCart = obj => {
-		const cart = {
-			...obj,
-			quantity: 1,
-		};
-		dispatch(addComicsInCurtAction(cart));
-	};
-
-	const handleAddInCurtClick = () => {
-		setIsAddCart(true);
-		addCart(props.item);
-	};
+	const items = useSelector(state => state.comicsCart.items);
+	const isInCart = items[id]?.quantity > 0;
 
 	return (
 		<div key={id} className={style.comicsItem}>
@@ -33,8 +19,9 @@ function ComicsItem(props) {
 			<p className={style.rating}>Rating: {rating}</p>
 			<p className={style.price}>Price: {price} $</p>
 			<p className={style.desc}>{desc.replace(/<\/?[a-zA-Z]+>/gi, '')}</p>
-			<DeleteButton title='Удалить' onClick={props.deleteComicsItem} />
-			{isAddCart ? <Counter addCart={addCart} setIsAddCart={setIsAddCart} onClick={() => addCart(props.item)} /> : <AddInCurt onClick={handleAddInCurtClick} />}
+			<DeleteButton title='Удалить' onClick={deleteComicsItem} />
+
+			{isInCart ? <Counter id={id} /> : <AddToCartButton product={item} />}
 		</div>
 	);
 }

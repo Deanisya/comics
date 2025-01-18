@@ -1,33 +1,42 @@
 import React from 'react';
-import style from './Cart.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeComicsInCurtAction } from '../../store/actions/comicsCartAction';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeItem, updateQuantity } from '../../store/reducers/comicsCartReducer';
+import Counter from '../common/Counter/Counter';
+import TotalSum from './TotalSum/TotalSum';
 
-function Cart() {
-	const cartGoods = useSelector(state => state.comicsCart.goods);
+const Cart = () => {
+	const items = useSelector(state => state.comicsCart.items);
+	console.log(items);
 	const dispatch = useDispatch();
 
-	const handleRemoveFromCart = id => {
-		dispatch(removeComicsInCurtAction(id));
+	const handleRemove = id => {
+		dispatch(removeItem(id));
 	};
+
+	// const handleQuantityChange = (id, quantity) => {
+	// 	dispatch(updateQuantity({ id, quantity }));
+	// };
 
 	return (
 		<div>
-			<h2>Я зина корзина</h2>
-			{cartGoods.length === 0 ? (
-				<p>Зина в отпуске, товаров нет</p>
-			) : (
-				<ul>
-					{cartGoods.map(cartGood => (
-						<li key={cartGood.id}>
-							{cartGood.name}-{cartGood.price}-{cartGood.quantity}
-							<button onClick={() => handleRemoveFromCart(cartGood.id)}>Удалить</button>
-						</li>
-					))}
-				</ul>
-			)}
+			<h2>Корзина</h2>
+			{Object.entries(items).map(([id, item]) => (
+				<div key={id}>
+					<h3>{item.name}</h3>
+					<p>Цена: {item ? item.quantity * item.price : 0} ₽</p>
+					{/* <input type='number' value={item.quantity} min='1' onChange={e => handleQuantityChange(id, +e.target.value)} /> */}
+					<Counter item={item} id={id} />
+					<button onClick={() => handleRemove(id)}>Удалить</button>
+				</div>
+			))}
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<TotalSum />
 		</div>
 	);
-}
+};
 
 export default Cart;
