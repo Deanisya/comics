@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQuantity } from '../../store/reducers/comicsCartReducer';
+import { removeAllItems, removeItem, updateQuantity } from '../../store/reducers/comicsCartReducer';
 import Counter from '../common/Counter/Counter';
 import TotalSum from './TotalSum/TotalSum';
 
@@ -11,6 +11,10 @@ const Cart = () => {
 
 	const handleRemove = id => {
 		dispatch(removeItem(id));
+	};
+
+	const handleRemoveAll = () => {
+		dispatch(removeAllItems());
 	};
 
 	// const handleQuantityChange = (id, quantity) => {
@@ -35,6 +39,7 @@ const Cart = () => {
 			<br />
 			<br />
 			<TotalSum />
+			<button onClick={handleRemoveAll}>Delete All Goods</button>
 		</div>
 	);
 };

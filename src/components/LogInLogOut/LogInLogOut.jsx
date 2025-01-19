@@ -16,7 +16,7 @@ function LogInLogOut() {
 	};
 
 	return (
-		<div>
+		<div style={{ paddingTop: '10vh' }}>
 			{isLogin ? <button onClick={logOut}>Log Out</button> : <button onClick={logIn}>Log In</button>}
 			<MyModal title='User authorization' isModal={isModal} closeModal={() => setIsModal(false)}>
 				<FormLogIn setIsLoginTrue={() => setIsLogin(true)} closeModal={() => setIsModal(false)} />

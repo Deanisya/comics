@@ -1,6 +1,7 @@
 export const ADD_COMICS = 'ADD_COMICS';
 export const DELETE_COMICS = 'DELETE_COMICS';
 export const LOAD_COMICS = 'LOAD_COMICS';
+export const SORT_COMICS = 'SORT_COMICS';
 
 export const deleteComicsAction = index => {
 	return {
@@ -12,6 +13,12 @@ export const addComicsAction = obj => {
 	return {
 		type: ADD_COMICS,
 		payload: obj,
+	};
+};
+export const sortComicsAction = sortOption => {
+	return {
+		type: SORT_COMICS,
+		payload: sortOption,
 	};
 };
 

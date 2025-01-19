@@ -5,17 +5,18 @@ import MyModal from '../MyModal/MyModal';
 import FormComics from '../FormComics/FormComics';
 import { useDispatch, useSelector } from 'react-redux';
 import { addComicsAction, deleteComicsAction, loadComicsAction } from '../../store/actions/catalogComicsActions';
+import Filter from '../Filter/Filter';
 
 function CatalogListRedux() {
 	const [isModal, setIsModal] = useState(false);
-	let comics = useSelector(state => state.catalogComics);
-	// const comics = useSelector(state => (state.comics ? state.comics.catalogComics : []));
+	let comics = useSelector(state => state.catalogComics.comics);
+	// const comics = useSelector(state => state.catalogComics.sortedComics);
 
 	let dispatch = useDispatch();
 
 	useEffect(() => {
 		dispatch(loadComicsAction());
-	}, []);
+	}, [dispatch]);
 
 	const getRandomPrice = (comicId, min, max) => {
 		const savedPrices = JSON.parse(localStorage.getItem('comicPrices')) || {}; // Получаем все сохранённые цены
@@ -32,6 +33,7 @@ function CatalogListRedux() {
 
 	return (
 		<>
+			<Filter />
 			<button className={style.addBtn} onClick={() => setIsModal(true)}>
 				Create new comics
 			</button>
