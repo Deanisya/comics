@@ -43,7 +43,6 @@ export const catalogComicsReducer = (state = initialState, action) => {
 				comics: action.payload,
 			};
 		case SORT_COMICS:
-			// Применяем сортировку при изменении опции сортировки
 			const sortedComics = sortComics(state.comics, action.payload);
 			return {
 				...state,
@@ -58,19 +57,19 @@ export const catalogComicsReducer = (state = initialState, action) => {
 
 // Функция для сортировки комиксов
 const sortComics = (comics, sortOption) => {
-	let sortedComics = [...comics]; // Копируем массив, чтобы не мутировать исходный
+	let sortedComics = [...comics];
 	switch (sortOption) {
 		case 'rating':
-			sortedComics.sort((a, b) => b.rating - a.rating); // сортировка по рейтингу
+			sortedComics.sort((a, b) => b.rating - a.rating);
 			break;
 		case 'date':
-			sortedComics.sort((a, b) => new Date(b.premiered) - new Date(a.premiered)); // сортировка по дате
+			sortedComics.sort((a, b) => new Date(b.premiered) - new Date(a.premiered));
 			break;
 		case 'increase':
-			sortedComics.sort((a, b) => getPriceFromStorage(a.id) - getPriceFromStorage(b.id)); // сортировка по возрастанию цены
+			sortedComics.sort((a, b) => getPriceFromStorage(a.id) - getPriceFromStorage(b.id));
 			break;
 		case 'decrease':
-			sortedComics.sort((a, b) => getPriceFromStorage(b.id) - getPriceFromStorage(a.id)); // сортировка по убыванию цены
+			sortedComics.sort((a, b) => getPriceFromStorage(b.id) - getPriceFromStorage(a.id));
 			break;
 		case 'all':
 			break;
@@ -82,6 +81,6 @@ const sortComics = (comics, sortOption) => {
 };
 
 const getPriceFromStorage = comicId => {
-	const savedPrices = JSON.parse(localStorage.getItem('comicPrices')) || {}; // Получаем все сохранённые цены
-	return savedPrices[comicId] || 0; // Возвращаем цену для конкретного комикса или 0, если не найдена
+	const savedPrices = JSON.parse(localStorage.getItem('comicPrices')) || {};
+	return savedPrices[comicId] || 0;
 };

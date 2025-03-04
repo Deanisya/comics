@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-// import CatalogList from './components/CatalogList/CatalogList';
-import LogInLogOut from './components/LogInLogOut/LogInLogOut';
 import CatalogListRedux from './components/CatalogListRedux/CatalogListRedux';
 import NavBar from './components/NavBar/NavBar';
 import SectionContainer from './components/SectionContainer/SectionContainer';
@@ -12,7 +9,6 @@ function App() {
 		<div className='App'>
 			<NavBar />
 			<SideBar />
-			<LogInLogOut />
 			<SectionContainer>
 				<CatalogListRedux />
 			</SectionContainer>

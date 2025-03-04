@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Создаем slice для корзины
 const cartSlice = createSlice({
 	name: 'cart',
 	initialState: {

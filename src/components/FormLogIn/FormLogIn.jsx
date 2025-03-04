@@ -24,6 +24,7 @@ function FormLogIn({ closeModal, setIsLoginTrue }) {
 
 	return (
 		<div>
+			<p>Login: admin, Password: 123</p>
 			<form>
 				<label>
 					Login:

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import s from './TotalSum.module.css';
 
 function TotalSum() {
 	const totalSum = useSelector(state => {
@@ -10,7 +11,7 @@ function TotalSum() {
 
 	return (
 		<div>
-			<p>Общая сумма: {totalSum} $</p>
+			<p className={s.totalSum}>Общая сумма: {totalSum} $</p>
 		</div>
 	);
 }

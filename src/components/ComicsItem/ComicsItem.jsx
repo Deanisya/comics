@@ -19,7 +19,7 @@ function ComicsItem({ item, deleteComicsItem }) {
 			<p className={style.rating}>Rating: {rating}</p>
 			<p className={style.price}>Price: {price} $</p>
 			<p className={style.desc}>{desc.replace(/<\/?[a-zA-Z]+>/gi, '')}</p>
-			<DeleteButton title='Удалить' onClick={deleteComicsItem} />
+			<DeleteButton title='Delete' onClick={deleteComicsItem} />
 
 			{isInCart ? <Counter id={id} /> : <AddToCartButton product={item} />}
 		</div>

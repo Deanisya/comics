@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import MyModal from '../MyModal/MyModal';
 import FormLogIn from '../FormLogIn/FormLogIn';
+import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function LogInLogOut() {
 	const [isLogin, setIsLogin] = useState(false);
@@ -16,8 +18,16 @@ function LogInLogOut() {
 	};
 
 	return (
-		<div style={{ paddingTop: '10vh' }}>
-			{isLogin ? <button onClick={logOut}>Log Out</button> : <button onClick={logIn}>Log In</button>}
+		<div>
+			{isLogin ? (
+				<button style={{ background: 'transparent', color: 'white', border: 'none', fontSize: '35px' }} onClick={logOut}>
+					<LogoutIcon />
+				</button>
+			) : (
+				<button style={{ background: 'transparent', color: 'white', border: 'none', fontSize: '35px' }} onClick={logIn}>
+					<PersonIcon />
+				</button>
+			)}
 			<MyModal title='User authorization' isModal={isModal} closeModal={() => setIsModal(false)}>
 				<FormLogIn setIsLoginTrue={() => setIsLogin(true)} closeModal={() => setIsModal(false)} />
 			</MyModal>

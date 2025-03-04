@@ -5,7 +5,7 @@ function AddInCurt({ onClick }) {
 	return (
 		<div>
 			<button className={styles.button} onClick={onClick}>
-				Add in curt
+				Add in cart
 			</button>
 		</div>
 	);

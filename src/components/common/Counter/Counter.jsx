@@ -16,7 +16,7 @@ function Counter({ id }) {
 	};
 
 	return (
-		<div>
+		<div className={styles.counterBlock}>
 			<button onClick={handleDecrement}>-</button>
 			<span className={styles.count}>{item.quantity}</span>
 			<button onClick={handleIncrement}>+</button>

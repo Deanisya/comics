@@ -1,13 +1,14 @@
 .openSideBar {
 	position: fixed;
 	top: 0;
-	right: -300px;
-	width: 300px;
+	right: -500px;
+	width: 500px;
 	height: 100%;
-	background-color: #5a5a5a;
+	background-color: #131313;
 	transition: right 0.3s ease;
 	z-index: 1000;
 }
 .open {
 	right: 0;
+	border-left: 1px solid white;
 }

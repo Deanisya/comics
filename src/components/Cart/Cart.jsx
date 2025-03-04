@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeAllItems, removeItem, updateQuantity } from '../../store/reducers/comicsCartReducer';
 import Counter from '../common/Counter/Counter';
 import TotalSum from './TotalSum/TotalSum';
-
+import s from './Cart.module.css';
 const Cart = () => {
 	const items = useSelector(state => state.comicsCart.items);
 	console.log(items);
@@ -22,24 +22,21 @@ const Cart = () => {
 	// };
 
 	return (
-		<div>
-			<h2>Корзина</h2>
+		<div className={s.cartBlock}>
+			<h2 style={{ textAlign: 'center', color: 'white' }}>Cart</h2>
 			{Object.entries(items).map(([id, item]) => (
-				<div key={id}>
+				<div key={id} className={s.cart}>
 					<h3>{item.name}</h3>
-					<p>Цена: {item ? item.quantity * item.price : 0} ₽</p>
+					<p>Price: {item ? item.quantity * item.price : 0} $</p>
 					{/* <input type='number' value={item.quantity} min='1' onChange={e => handleQuantityChange(id, +e.target.value)} /> */}
 					<Counter item={item} id={id} />
-					<button onClick={() => handleRemove(id)}>Удалить</button>
+					<button onClick={() => handleRemove(id)}>X</button>
 				</div>
 			))}
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
 			<TotalSum />
-			<button onClick={handleRemoveAll}>Delete All Goods</button>
+			<button className={s.removeBtn} onClick={handleRemoveAll}>
+				Delete All Goods
+			</button>
 		</div>
 	);
 };

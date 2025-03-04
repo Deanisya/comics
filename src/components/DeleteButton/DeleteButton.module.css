@@ -3,4 +3,11 @@
 	right: 5px;
 	top: 5px;
 	cursor: pointer;
+	color: red;
+	background-color: black;
+	border-radius: 4px;
+}
+
+.deleteBtn:hover {
+	background-color: #181818;
 }
