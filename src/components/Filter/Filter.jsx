@@ -6,7 +6,7 @@ function Filter() {
 	const dispatch = useDispatch();
 	const sortOption = useSelector(state => state.catalogComics.sortOption);
 	const handleSortChange = event => {
-		dispatch(sortComicsAction(event.target.value)); //// Передаем выбранную опцию сортировки
+		dispatch(sortComicsAction(event.target.value));
 	};
 
 	return (

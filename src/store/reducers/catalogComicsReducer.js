@@ -1,4 +1,4 @@
-// рекомендации по action
+// рекомендации по action для себя как пример
 // {
 //     type: "ADD_COMICS",
 //     payload: {} // данные с помощью которых редьюсер делает изменения в сторе
@@ -22,7 +22,7 @@ import { ADD_COMICS, DELETE_COMICS, LOAD_COMICS, SORT_COMICS } from '../actions/
 
 const initialState = {
 	comics: [],
-	sortOption: 'all', // Храним текущую выбранную опцию сортировки
+	sortOption: 'all',
 };
 
 export const catalogComicsReducer = (state = initialState, action) => {

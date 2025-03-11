@@ -19,15 +19,15 @@ function CatalogListRedux() {
 	}, [dispatch]);
 
 	const getRandomPrice = (comicId, min, max) => {
-		const savedPrices = JSON.parse(localStorage.getItem('comicPrices')) || {}; // Получаем все сохранённые цены
+		const savedPrices = JSON.parse(localStorage.getItem('comicPrices')) || {};
 		if (savedPrices[comicId]) {
-			return savedPrices[comicId]; // Возвращаем существующую цену для конкретного комикса
+			return savedPrices[comicId];
 		}
-		const newPrice = parseFloat((Math.random() * (max - min) + min).toFixed(0)); // Генерируем новую случайную цену
+		const newPrice = parseFloat((Math.random() * (max - min) + min).toFixed(0));
 		console.log(newPrice);
 
-		savedPrices[comicId] = newPrice; // Сохраняем цену по уникальному ID
-		localStorage.setItem('comicPrices', JSON.stringify(savedPrices)); // Обновляем localStorage
+		savedPrices[comicId] = newPrice;
+		localStorage.setItem('comicPrices', JSON.stringify(savedPrices));
 		return newPrice;
 	};
 

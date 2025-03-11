@@ -8,23 +8,23 @@ function CatalogList(props) {
 	const [comics, setComics] = useState([]);
 	const [isModal, setIsModal] = useState(false);
 
-	useEffect(() => {
-		fetch('https://api.tvmaze.com/search/shows?q=batman')
-			.then(res => res.json())
-			.then(data => {
-				let arr = data.map(e => ({
-					name: e.show.name,
-					link_url: e.show.url,
-					img_src: e.show.image.original,
-					rating: e.show.rating.average,
-					premiered: e.show.premiered,
-					desc: e.show.summary,
-					id: e.show.id,
-				}));
+	// useEffect(() => {
+	// 	fetch('https://api.tvmaze.com/search/shows?q=batman')
+	// 		.then(res => res.json())
+	// 		.then(data => {
+	// 			let arr = data.map(e => ({
+	// 				name: e.show.name,
+	// 				link_url: e.show.url,
+	// 				img_src: e.show.image.original,
+	// 				rating: e.show.rating.average,
+	// 				premiered: e.show.premiered,
+	// 				desc: e.show.summary,
+	// 				id: e.show.id,
+	// 			}));
 
-				setComics(arr);
-			});
-	}, []);
+	// 			setComics(arr);
+	// 		});
+	// }, []); ------ перенесено в action
 
 	const deleteComicsItem = index => {
 		comics.splice(index, 1);

@@ -43,4 +43,4 @@ export const loadComicsAction = () => {
 				});
 			});
 	};
-}; // можно передать вторым параметром функцию геттер getState
+};
