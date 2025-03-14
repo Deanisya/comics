@@ -65,8 +65,12 @@ const cartSlice = createSlice({
 				}
 			}
 		},
+		loadCartItems(state, action) {
+			state.items = action.payload;
+			state.totalQuantity = Object.values(action.payload).reduce((total, item) => total + item.quantity, 0);
+		},
 	},
 });
 
-export const { addItem, removeItem, updateQuantity, openSideBar, closeSideBar, incrementCount, decrementCount, removeAllItems } = cartSlice.actions;
+export const { addItem, removeItem, updateQuantity, openSideBar, closeSideBar, incrementCount, decrementCount, removeAllItems, loadCartItems } = cartSlice.actions;
 export default cartSlice.reducer;

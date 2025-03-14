@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeAllItems, removeItem, updateQuantity } from '../../store/reducers/comicsCartReducer';
+import { loadCartItems, removeAllItems, removeItem, updateQuantity } from '../../store/reducers/comicsCartReducer';
 import Counter from '../common/Counter/Counter';
 import TotalSum from './TotalSum/TotalSum';
 import s from './Cart.module.css';
@@ -8,6 +8,17 @@ const Cart = () => {
 	const items = useSelector(state => state.comicsCart.items);
 	console.log(items);
 	const dispatch = useDispatch();
+	useEffect(() => {
+		const savedItems = localStorage.getItem('cart');
+		if (savedItems) {
+			const parsedItems = JSON.parse(savedItems);
+			dispatch(loadCartItems(parsedItems));
+		}
+	}, [dispatch]);
+
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify(items));
+	}, [items]);
 
 	const handleRemove = id => {
 		dispatch(removeItem(id));
